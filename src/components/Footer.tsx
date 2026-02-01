@@ -2,7 +2,7 @@ export default function Footer() {
   return (
     <footer
       id="contact"
-      className="bg-[#1e3a5f] text-white py-12 px-5 text-center scroll-mt-20 max-md:scroll-mt-32 max-sm:scroll-mt-36"
+      className="bg-[#1e3a5f] text-white py-12 px-5 text-center scroll-mt-20 max-md:scroll-mt-32 max-sm:scroll-mt-36 pb-[calc(3rem+env(safe-area-inset-bottom))]"
     >
       <div>
         <h2 className="text-2xl text-white mb-5 pb-3 border-b-3 border-white/30 inline-block">

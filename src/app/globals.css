@@ -4,6 +4,7 @@
 html {
   scroll-behavior: smooth;
   background: #1e3a5f; /* フッターと同じ色（オーバースクロール対策） */
+  overscroll-behavior: none; /* バウンス効果を無効化 */
 }
 
 body {
