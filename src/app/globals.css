@@ -3,6 +3,7 @@
 
 html {
   scroll-behavior: smooth;
+  background: #1e3a5f; /* フッターと同じ色（オーバースクロール対策） */
 }
 
 body {
