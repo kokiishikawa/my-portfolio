@@ -50,20 +50,25 @@ export default function Home() {
   }, []);
 
   // ハッシュがある場合、該当セクションへスムーズスクロール
+  // 本番環境ではハイドレーションのタイミングが異なるため、複数回試みる
   useEffect(() => {
     const hash = window.location.hash;
-    if (hash) {
-      setTimeout(() => {
-        const element = document.querySelector(hash);
-        if (element) {
-          const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-          window.scrollTo({
-            top: elementPosition - getHeaderOffset(),
-            behavior: "smooth",
-          });
-        }
-      }, 50);
-    }
+    if (!hash) return;
+
+    const scrollToHash = () => {
+      const element = document.querySelector(hash);
+      if (element) {
+        const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({
+          top: elementPosition - getHeaderOffset(),
+          behavior: "smooth",
+        });
+      }
+    };
+
+    // 複数タイミングでスクロールを試みる（本番環境対応）
+    const timers = [50, 100, 200].map(ms => setTimeout(scrollToHash, ms));
+    return () => timers.forEach(clearTimeout);
   }, []);
 
   const openLightbox = (src: string, alt: string) => {
