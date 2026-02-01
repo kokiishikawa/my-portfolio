@@ -9,6 +9,10 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
+// ビルド時に静的生成（高速化）
+export const dynamic = "force-static";
+export const dynamicParams = false; // 未知のslugは404
+
 export async function generateStaticParams() {
   const posts = getAllPosts();
   return posts.map((post) => ({ slug: post.slug }));
