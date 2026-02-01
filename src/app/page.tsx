@@ -76,7 +76,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col min-h-dvh">
+    <div className="flex flex-col min-h-svh">
       <Header />
 
       <main className="max-w-[900px] mx-auto pb-10 px-5 flex-grow w-full" style={{ paddingTop: "144px" }}>

@@ -7,7 +7,7 @@ export default function BlogPage() {
   const posts = getAllPosts();
 
   return (
-    <div className="flex flex-col min-h-dvh">
+    <div className="flex flex-col min-h-svh">
       <Header />
 
       <main className="max-w-[900px] mx-auto pb-10 px-5 flex-grow w-full pt-36 max-md:pt-28 max-sm:pt-32">
