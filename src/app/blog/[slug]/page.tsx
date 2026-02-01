@@ -23,10 +23,10 @@ export default async function BlogPostPage({ params }: Props) {
   }
 
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Header />
 
-      <main className="max-w-[900px] mx-auto py-10 px-5">
+      <main className="max-w-[900px] mx-auto pb-10 px-5 flex-grow w-full pt-36 max-md:pt-28 max-sm:pt-32">
         <Link
           href="/blog"
           className="text-blue-500 hover:underline text-sm mb-6 inline-block"
@@ -63,6 +63,6 @@ export default async function BlogPostPage({ params }: Props) {
       </main>
 
       <Footer />
-    </>
+    </div>
   );
 }

@@ -7,10 +7,10 @@ export default function BlogPage() {
   const posts = getAllPosts();
 
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Header />
 
-      <main className="max-w-[900px] mx-auto py-10 px-5 min-h-[60vh]">
+      <main className="max-w-[900px] mx-auto pb-10 px-5 flex-grow w-full pt-36 max-md:pt-28 max-sm:pt-32">
         <div className="mb-10">
           <h1 className="text-3xl text-[#1e3a5f] font-bold mb-2">Blog</h1>
           <p className="text-gray-600">技術的な学びや日々の開発について</p>
@@ -58,6 +58,6 @@ export default function BlogPage() {
       </main>
 
       <Footer />
-    </>
+    </div>
   );
 }
