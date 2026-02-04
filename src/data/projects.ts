@@ -68,6 +68,7 @@ export const projects = [
       "DRF",
       "PostgreSQL",
       "Docker",
+      "Vercel",
       "GitHub Actions",
     ],
     description: [
