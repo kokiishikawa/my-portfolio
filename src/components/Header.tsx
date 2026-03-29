@@ -22,19 +22,16 @@ export default function Header() {
     if (!href.startsWith("/#")) return;
 
     const hash = href.substring(1); // "/#profile" -> "#profile"
-    const isHomePage = window.location.pathname === "/";
+    const element = document.querySelector(hash);
 
-    if (isHomePage) {
+    if (element) {
       e.preventDefault();
-      const element = document.querySelector(hash);
-      if (element) {
-        const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-        window.scrollTo({
-          top: elementPosition - getHeaderOffset(),
-          behavior: "smooth",
-        });
-        history.pushState(null, "", hash);
-      }
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: elementPosition - getHeaderOffset(),
+        behavior: "smooth",
+      });
+      history.pushState(null, "", hash);
     }
     // 別ページからの場合はデフォルト動作（ページ遷移）
   };
