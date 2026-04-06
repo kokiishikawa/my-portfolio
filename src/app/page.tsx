@@ -20,6 +20,11 @@ const getHeaderOffset = () => {
 
 export default function Home() {
   const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const ITEMS_PER_PAGE = 3;
+  const totalPages = Math.ceil(projects.length / ITEMS_PER_PAGE);
+  const pagedProjects = projects.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
 
   // ブラウザのスクロール復元を無効化し、スクロール位置をリセット
   useLayoutEffect(() => {
@@ -88,7 +93,7 @@ export default function Home() {
             個人開発プロジェクト
           </h2>
 
-          {projects.map((project) => (
+          {pagedProjects.map((project) => (
             <ProjectCard
               key={project.title}
               title={project.title}
@@ -100,6 +105,24 @@ export default function Home() {
               onImageClick={openLightbox}
             />
           ))}
+
+          {totalPages > 1 && (
+            <div className="flex justify-center gap-2 mt-4">
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                <button
+                  key={page}
+                  onClick={() => setCurrentPage(page)}
+                  className={`w-9 h-9 rounded-full text-sm font-semibold transition-colors duration-200 cursor-pointer ${
+                    page === currentPage
+                      ? "bg-blue-500 text-white"
+                      : "bg-white text-gray-600 hover:bg-gray-100"
+                  }`}
+                >
+                  {page}
+                </button>
+              ))}
+            </div>
+          )}
         </section>
       </main>
 

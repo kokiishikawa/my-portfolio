@@ -27,7 +27,7 @@ export default function Footer() {
             github.com/kokiishikawa
           </a>
         </div>
-        <p className="mt-6 text-sm opacity-70">&copy; 2025 koki.ishikawa</p>
+        <p className="mt-6 text-sm opacity-70">&copy; 2026 koki.ishikawa</p>
       </div>
     </footer>
   );

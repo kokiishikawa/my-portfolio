@@ -13,7 +13,7 @@ const skillsData = [
   },
   {
     category: "ツール・AI",
-    skills: ["Git/GitHub", "Claude AI", "VS Code", "IntelliJ IDEA"],
+    skills: ["Git/GitHub", "Claude Code", "VS Code", "IntelliJ IDEA"],
   },
 ];
 

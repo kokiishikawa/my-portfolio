@@ -1,7 +1,23 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { getAllPosts } from "@/lib/blog";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+
+export const metadata: Metadata = {
+  title: "Blog | koki.ishikawa",
+  description: "技術的な学びや日常について書いています。",
+  openGraph: {
+    title: "Blog | koki.ishikawa",
+    description: "技術的な学びや日常について書いています。",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog | koki.ishikawa",
+    description: "技術的な学びや日常について書いています。",
+  },
+};
 
 // ビルド時に静的生成（高速化）
 export const dynamic = "force-static";

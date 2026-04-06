@@ -173,7 +173,6 @@ export const projects = [
 				items: [
 					'サーバーレス構成でインフラ管理コストをゼロに',
 					'GitHub ActionsとOIDCを使った安全な自動デプロイ（アクセスキー不要）',
-					'IAMの最小権限設定でセキュリティを担保',
 				],
 			},
 			{

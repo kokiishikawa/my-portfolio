@@ -132,6 +132,13 @@ body {
   margin: 1.5rem 0;
 }
 
+.blog-content iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+
 /* Print Styles */
 @media print {
   * {

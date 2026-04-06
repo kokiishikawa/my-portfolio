@@ -23,8 +23,10 @@ export default function Profile() {
           <h2 className="text-3xl text-[#1e3a5f] mb-1 font-bold">koki</h2>
           <p className="text-base text-blue-500 font-semibold mb-4">自称 Engineer</p>
           <p className="text-gray-600 text-[0.95rem] leading-7 mb-5">
-            農機メーカーでITサポートとして、新しいイノベーションを生み出すエンジニアたちの端末管理やソフトウェア不具合対応を担当しています。
-            業務の中で反復作業をPythonやPower Automateで効率化することにも取り組んでいます。
+            ITサポートとして端末管理やソフトウェア不具合対応を経験してきました。
+            月100台以上発生するPCキッティング作業をPythonのRPAスクリプトやバッチファイルで自動化し、
+            Power AutomateでForms・Outlook・Teams・Plannerを連携したサポート業務フローを構築するなど、
+            反復作業の効率化に取り組んできました。<br/>
             個人開発では興味のある技術にとりあえず触ってみるスタイルで学習中です。
           </p>
           <div className="flex flex-col gap-3 max-md:w-full">
