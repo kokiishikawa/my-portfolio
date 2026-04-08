@@ -20,7 +20,7 @@ const skillsData = [
 export default function Skills() {
   return (
     <section id="skills" className="mb-15 scroll-mt-30 max-md:scroll-mt-[150px]">
-      <h2 className="text-2xl text-[#1e3a5f] mb-6 pb-3 border-b-3 border-blue-500 inline-block font-bold">
+      <h2 className="text-2xl text-[#111827] mb-6 pb-3 border-b border-gray-900 inline-block font-bold">
         技術スタック
       </h2>
 
@@ -37,7 +37,7 @@ export default function Skills() {
               {category.skills.map((skill) => (
                 <span
                   key={skill}
-                  className="bg-sky-100 text-sky-700 py-1.5 px-3.5 rounded-full text-sm font-medium"
+                  className="bg-gray-100 text-gray-600 py-1.5 px-3.5 rounded-full text-sm font-medium"
                 >
                   {skill}
                 </span>

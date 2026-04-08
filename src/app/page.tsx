@@ -89,7 +89,7 @@ export default function Home() {
         <Skills />
 
         <section id="projects" className="mb-15 scroll-mt-30 max-md:scroll-mt-[150px]">
-          <h2 className="text-2xl text-[#1e3a5f] mb-6 pb-3 border-b-3 border-blue-500 inline-block font-bold">
+          <h2 className="text-2xl text-[#111827] mb-6 pb-3 border-b border-gray-900 inline-block font-bold">
             個人開発プロジェクト
           </h2>
 
@@ -114,7 +114,7 @@ export default function Home() {
                   onClick={() => setCurrentPage(page)}
                   className={`w-9 h-9 rounded-full text-sm font-semibold transition-colors duration-200 cursor-pointer ${
                     page === currentPage
-                      ? "bg-blue-500 text-white"
+                      ? "bg-gray-900 text-white"
                       : "bg-white text-gray-600 hover:bg-gray-100"
                   }`}
                 >

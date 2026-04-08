@@ -9,19 +9,19 @@ const profileDetails = [
 export default function Profile() {
   return (
     <section id="profile" className="mb-15 scroll-mt-30">
-      <div className="flex gap-10 items-start bg-white p-8 rounded-2xl shadow-md max-md:flex-col max-md:items-center max-md:text-center max-md:gap-6 max-md:p-6">
+      <div className="flex gap-10 items-start bg-white p-8 rounded-2xl shadow-sm border border-gray-100 max-md:flex-col max-md:items-center max-md:text-center max-md:gap-6 max-md:p-6">
         <div className="flex-shrink-0">
           <Image
             src="/profile.jpeg"
             alt="プロフィール画像"
             width={160}
             height={160}
-            className="w-40 h-40 rounded-full object-cover border-4 border-sky-100 max-md:w-30 max-md:h-30"
+            className="w-40 h-40 rounded-full object-cover border-4 border-gray-200 max-md:w-30 max-md:h-30"
           />
         </div>
         <div className="flex-1">
-          <h2 className="text-3xl text-[#1e3a5f] mb-1 font-bold">koki</h2>
-          <p className="text-base text-blue-500 font-semibold mb-4">自称 Engineer</p>
+          <h2 className="text-3xl text-[#111827] mb-1 font-bold">koki</h2>
+          <p className="text-base text-gray-500 font-semibold mb-4">自称 Engineer</p>
           <p className="text-gray-600 text-[0.95rem] leading-7 mb-5">
             ITサポートとして端末管理やソフトウェア不具合対応を経験してきました。
             月100台以上発生するPCキッティング作業をPythonのRPAスクリプトやバッチファイルで自動化し、
@@ -35,7 +35,7 @@ export default function Profile() {
                 key={item.label}
                 className="flex gap-4 items-baseline max-md:flex-row max-md:justify-start max-md:text-left"
               >
-                <span className="flex-shrink-0 w-20 min-w-[90px] text-sm font-semibold text-[#1e3a5f] max-md:w-[90px]">
+                <span className="flex-shrink-0 w-20 min-w-[90px] text-sm font-semibold text-[#111827] max-md:w-[90px]">
                   {item.label}
                 </span>
                 <span className="text-sm text-gray-600 flex-1">{item.value}</span>

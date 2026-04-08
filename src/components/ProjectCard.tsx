@@ -28,10 +28,10 @@ export default function ProjectCard({
   onImageClick,
 }: ProjectProps) {
   return (
-    <div className="bg-white p-7 mb-7 rounded-2xl shadow-md transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg max-md:p-5">
+    <div className="bg-white p-7 mb-7 rounded-2xl shadow-sm border border-gray-100 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md max-md:p-5">
       <div className="flex justify-between items-center mb-4 max-md:flex-col max-md:items-start max-md:gap-2">
-        <h3 className="text-xl text-[#1e3a5f] font-bold">{title}</h3>
-        <span className="bg-blue-100 text-blue-700 py-1 px-3 rounded-full text-xs font-semibold uppercase tracking-wide">
+        <h3 className="text-xl text-[#111827] font-bold tracking-tight">{title}</h3>
+        <span className="border border-gray-300 text-gray-500 py-1 px-3 rounded-full text-xs font-medium uppercase tracking-wide">
           {badge}
         </span>
       </div>
@@ -64,7 +64,7 @@ export default function ProjectCard({
       <div className="my-5 leading-7">
         {description.map((section) => (
           <div key={section.title} className="mb-4">
-            <h4 className="text-base text-[#1e3a5f] mb-2 font-semibold">
+            <h4 className="text-base text-[#111827] mb-2 font-semibold">
               {section.title}
             </h4>
             {section.content && (
@@ -96,7 +96,7 @@ export default function ProjectCard({
           href={links.demo}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center py-2.5 px-5 rounded-lg text-sm font-semibold no-underline transition-all duration-200 bg-blue-500 text-white hover:bg-blue-600"
+          className="inline-flex items-center justify-center py-2.5 px-5 rounded-lg text-sm font-semibold no-underline transition-all duration-200 border border-gray-900 text-gray-900 hover:bg-gray-50"
         >
           Demo
         </a>

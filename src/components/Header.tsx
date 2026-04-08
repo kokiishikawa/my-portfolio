@@ -37,14 +37,14 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-gradient-to-br from-[#1e3a5f] to-[#2d5a87] text-white py-4 px-3 text-center fixed top-0 left-0 right-0 z-100">
+    <header className="bg-white/80 backdrop-blur-md border-b border-gray-200 py-4 px-3 text-center fixed top-0 left-0 right-0 z-100">
       <nav className="flex justify-center gap-8 max-md:gap-4 max-sm:gap-5">
         {navItems.map((item) => (
           <a
             key={item.href}
             href={item.href}
             onClick={(e) => handleClick(e, item.href)}
-            className="text-white no-underline text-[0.95rem] max-sm:text-base py-2 border-b-2 border-transparent hover:border-white/70 transition-colors"
+            className="text-gray-700 no-underline text-[0.95rem] max-sm:text-base py-2 border-b-2 border-transparent hover:border-gray-400 hover:text-gray-900 transition-colors"
           >
             {item.label}
           </a>
