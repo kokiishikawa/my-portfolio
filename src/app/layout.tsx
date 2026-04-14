@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { Analytics } from '@vercel/analytics/next';
+import { OpeningAnimation } from '@/components/OpeningAnimation';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -35,6 +36,7 @@ export default function RootLayout({
 	return (
 		<html lang="ja">
 			<body className={inter.className}>
+				<OpeningAnimation />
 				{children}
 				<Analytics />
 			</body>

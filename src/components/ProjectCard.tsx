@@ -44,7 +44,7 @@ export default function ProjectCard({
             alt={image.alt}
             width={400}
             height={300}
-            className="w-full h-auto rounded-lg border border-gray-200 cursor-pointer transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
+            className="w-full h-48 object-contain bg-gray-50 rounded-lg border border-gray-200 cursor-pointer transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
             onClick={() => onImageClick(image.src, image.alt)}
           />
         ))}
@@ -92,14 +92,16 @@ export default function ProjectCard({
         >
           GitHub
         </a>
-        <a
-          href={links.demo}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center justify-center py-2.5 px-5 rounded-lg text-sm font-semibold no-underline transition-all duration-200 border border-gray-900 text-gray-900 hover:bg-gray-50"
-        >
-          Demo
-        </a>
+        {links.demo && (
+          <a
+            href={links.demo}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center py-2.5 px-5 rounded-lg text-sm font-semibold no-underline transition-all duration-200 border border-gray-900 text-gray-900 hover:bg-gray-50"
+          >
+            Demo
+          </a>
+        )}
       </div>
     </div>
   );

@@ -135,6 +135,70 @@ export const projects = [
 		},
 	},
 	{
+		title: 'LINE Article Digest',
+		badge: 'Serverless',
+		images: [
+			{
+				src: '/line-article-digest-architecture.png',
+				alt: 'LINE Article Digest アーキテクチャ図',
+			},
+			{
+				src: '/line-article-digest-demo-1.png',
+				alt: 'LINE Article Digest 動作デモ1',
+			},
+			{
+				src: '/line-article-digest-demo-2.png',
+				alt: 'LINE Article Digest 動作デモ2',
+			},
+		],
+		techStack: [
+			'Python',
+			'AWS Lambda',
+			'Amazon API Gateway',
+			'Amazon Bedrock',
+			'Amazon DynamoDB',
+			'LINE Messaging API',
+			'GitHub Actions',
+		],
+		description: [
+			{
+				title: '概要',
+				content:
+					'LINE に記事の URL を送ると、AWS Bedrock（Claude Haiku 4.5）が本文を要約して返信するサーバーレスアプリ。DynamoDB でユーザーごとの日次利用回数を管理し、上限超過時は案内メッセージを返す。',
+			},
+			{
+				title: '主な機能',
+				items: [
+					'LINE に URL を送るだけで記事を3〜5行に要約',
+					'BeautifulSoup で本文のみをスクレイピング（script/style/nav を除去）',
+					'Bedrock Converse API で日本語要約を生成',
+					'DynamoDB でユーザーごとの1日100回利用制限を管理',
+					'GitHub Actions で develop ブランチへの push 時に Lambda へ自動デプロイ',
+				],
+			},
+			{
+				title: '技術的なこだわり',
+				items: [
+					'Lambda の warm start を活かすためモジュールレベルで Bedrock クライアントを初期化',
+					'サーバーレス構成でインフラ管理コストをゼロに',
+					'JP cross-region inference profile ARN を使用し、Bedrock の on-demand 制限を回避',
+				],
+			},
+			{
+				title: '学んだこと',
+				items: [
+					'Bedrock Converse API の使い方と inference profile の仕組み',
+					'DynamoDB の UpdateExpression を使った原子的カウンタ更新',
+					'LINE Webhook のリクエスト署名検証とイベント処理フロー',
+				],
+			},
+		],
+		links: {
+			github: 'https://github.com/kokiishikawa/LINE-Article-Digest',
+			demo: '',
+		},
+	},
+	{
 		title: 'AWS Cost Notify',
 		badge: 'Serverless',
 		images: [

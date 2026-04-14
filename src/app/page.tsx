@@ -85,10 +85,15 @@ export default function Home() {
       <Header />
 
       <main className="max-w-[900px] mx-auto pb-10 px-5 flex-grow w-full" style={{ paddingTop: "144px" }}>
-        <Profile />
-        <Skills />
+        <div className="animate-suck-in">
+          <Profile />
+        </div>
+        <div className="animate-suck-in animation-delay-200">
+          <Skills />
+        </div>
 
-        <section id="projects" className="mb-15 scroll-mt-30 max-md:scroll-mt-[150px]">
+        <section id="projects"
+          className="mb-15 scroll-mt-30 max-md:scroll-mt-[150px] animate-suck-in animation-delay-450">
           <h2 className="text-2xl text-[#111827] mb-6 pb-3 border-b border-gray-900 inline-block font-bold">
             個人開発プロジェクト
           </h2>
@@ -111,7 +116,17 @@ export default function Home() {
               {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
                 <button
                   key={page}
-                  onClick={() => setCurrentPage(page)}
+                  onClick={() => {
+                    setCurrentPage(page);
+                    const element = document.getElementById("projects");
+                    if (element) {
+                      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+                      window.scrollTo({
+                        top: elementPosition - getHeaderOffset(),
+                        behavior: "smooth",
+                      });
+                    }
+                  }}
                   className={`w-9 h-9 rounded-full text-sm font-semibold transition-colors duration-200 cursor-pointer ${
                     page === currentPage
                       ? "bg-gray-900 text-white"

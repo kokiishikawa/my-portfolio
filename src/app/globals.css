@@ -16,6 +16,26 @@ body {
   background: #ffffff;
 }
 
+@keyframes suck-in {
+  from {
+    opacity: 0;
+    transform: scale(1.06);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+.animate-suck-in {
+  animation: suck-in 1.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animation-delay-200 { animation-delay: 0.2s; }
+.animation-delay-450 { animation-delay: 0.45s; }
+
 @keyframes zoom-in {
   from {
     transform: scale(0.9);
