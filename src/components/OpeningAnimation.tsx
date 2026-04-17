@@ -37,7 +37,7 @@ export function OpeningAnimation() {
         className="text-2xl font-light tracking-widest select-none italic"
         style={{ color: "#1e3a5f" }}
       >
-        Becoming someone I can love.
+        as a part of your calm
       </span>
     </div>
   );
