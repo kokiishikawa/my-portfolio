@@ -14,7 +14,7 @@ interface ProjectProps {
   images: { src: string; alt: string }[];
   techStack: string[];
   description: DescSection[];
-  links: { github: string; demo: string };
+  links: { github: string; demo?: string };
   onImageClick: (src: string, alt: string) => void;
 }
 
