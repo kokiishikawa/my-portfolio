@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 const profileDetails = [
-  { label: "経歴", value: "2024年新卒〜ITサポート業務" },
+  { label: "経歴", value: "製造業 / IoTエンジニア" },
   { label: "学習中", value: "AWS / Next.js / Python" },
   { label: "興味・関心", value: "AI活用、クラウドインフラ、開発効率化" },
 ];
@@ -21,13 +21,13 @@ export default function Profile() {
         </div>
         <div className="flex-1">
           <h2 className="text-3xl text-[#111827] mb-1 font-bold">koki</h2>
-          <p className="text-base text-gray-500 font-semibold mb-4">自称 Engineer</p>
+          <p className="text-base text-gray-500 font-semibold mb-4">Software Engineer</p>
           <p className="text-gray-600 text-[0.95rem] leading-7 mb-5">
-            ITサポートとして端末管理やソフトウェア不具合対応を経験してきました。
-            月100台以上発生するPCキッティング作業をPythonのRPAスクリプトやバッチファイルで自動化し、
-            Power AutomateでForms・Outlook・Teams・Plannerを連携したサポート業務フローを構築するなど、
-            反復作業の効率化に取り組んできました。<br/>
-            個人開発では興味のある技術にとりあえず触ってみるスタイルで学習中です。
+            製造業でIoTエンジニアとして、Pythonを用いたバックエンド開発に従事しています。
+            製造機械から取得したデータの収集・処理・加工を中心に、実務でのシステム開発経験があります。<br/>
+            前職のITサポートでは、PythonによるRPAスクリプトやPower Automateを使った業務自動化を推進してきました。「仕組みで課題を解決する」ことを得意としています。<br/>
+            個人開発ではAWS LambdaやAWSサービスを組み合わせたシステムを構築しており、クラウドを活用した仕組みの設計・提案もできます。<br/>
+            <span className="font-medium text-[#1e3a5f]">Python・業務自動化・AWSを使ったシステム開発</span>などの案件でお役に立てます。
           </p>
           <div className="flex flex-col gap-3 max-md:w-full">
             {profileDetails.map((item) => (

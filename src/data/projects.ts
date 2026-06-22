@@ -131,7 +131,6 @@ export const projects = [
 		],
 		links: {
 			github: 'https://github.com/kokiishikawa/my-personal-portal.git',
-			demo: 'https://my-personal-portal.vercel.app/',
 		},
 	},
 	{
