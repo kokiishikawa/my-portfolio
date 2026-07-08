@@ -31,7 +31,7 @@ export default function Lightbox({ src, alt, onClose }: LightboxProps) {
       onClick={onClose}
     >
       <span
-        className="absolute top-5 right-8 text-white text-4xl font-light cursor-pointer hover:text-blue-500 transition-colors z-[1001]"
+        className="absolute top-5 right-8 text-white/80 text-4xl font-light cursor-pointer hover:text-white transition-colors z-[1001]"
         onClick={onClose}
       >
         &times;

@@ -2,18 +2,19 @@ export default function Footer() {
   return (
     <footer
       id="contact"
-      className="bg-[#1a1a1a] text-white py-12 px-5 text-center scroll-mt-20 max-md:scroll-mt-32 max-sm:scroll-mt-36 pb-[calc(3rem+env(safe-area-inset-bottom))]"
+      className="bg-[#141413] text-[#faf9f5] py-20 px-5 text-center scroll-mt-24 pb-[calc(5rem+env(safe-area-inset-bottom))]"
     >
       <div>
-        <h2 className="text-2xl text-white mb-5 pb-3 border-b-3 border-white/30 inline-block">
+        <h2 className="text-3xl md:text-4xl font-medium tracking-tight mb-3">
           Contact
         </h2>
+        <p className="text-[#faf9f5]/60 mb-8">お気軽にご連絡ください。</p>
         <div className="my-5">
           <a
             href="https://github.com/kokiishikawa"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-white no-underline py-3 px-6 border border-white/30 rounded-lg transition-all duration-200 hover:bg-white/10 hover:border-white/50"
+            className="inline-flex items-center gap-2 text-white no-underline py-3 px-7 border border-white/25 rounded-full transition-colors duration-300 hover:bg-white/10 hover:border-white/50"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -27,7 +28,7 @@ export default function Footer() {
             github.com/kokiishikawa
           </a>
         </div>
-        <p className="mt-6 text-sm opacity-70">&copy; 2026 koki.ishikawa</p>
+        <p className="mt-10 text-sm text-white/50">&copy; 2026 koki.ishikawa</p>
       </div>
     </footer>
   );

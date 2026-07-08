@@ -55,28 +55,28 @@ export default async function BlogPostPage({ params }: Props) {
     <div className="flex flex-col min-h-svh">
       <Header />
 
-      <main className="max-w-[900px] mx-auto pb-10 px-5 flex-grow w-full pt-36 max-md:pt-28 max-sm:pt-32">
+      <main className="max-w-[900px] mx-auto pb-10 px-5 flex-grow w-full pt-32">
         <Link
           href="/blog"
-          className="text-blue-500 hover:underline text-sm mb-6 inline-block"
+          className="text-accent hover:underline text-sm mb-8 inline-block"
         >
           &larr; 記事一覧に戻る
         </Link>
 
-        <article className="bg-white p-8 rounded-xl shadow-sm max-md:p-5">
-          <header className="mb-8 pb-6 border-b border-gray-200">
-            <h1 className="text-3xl text-[#1e3a5f] font-bold mb-3 max-md:text-2xl">
+        <article>
+          <header className="mb-10 pb-8 border-b border-line">
+            <h1 className="text-4xl text-ink font-semibold tracking-tight mb-4 max-md:text-3xl">
               {post.title}
             </h1>
-            <div className="flex items-center gap-4 text-sm text-gray-500">
+            <div className="flex items-center gap-4 text-sm text-muted">
               <span>{post.date}</span>
             </div>
             {post.tags && post.tags.length > 0 && (
-              <div className="flex flex-wrap gap-2 mt-3">
+              <div className="flex flex-wrap gap-2 mt-4">
                 {post.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="bg-sky-100 text-sky-700 py-1 px-2 rounded text-xs"
+                    className="bg-surface text-ink/70 py-1 px-3 rounded-full text-xs"
                   >
                     {tag}
                   </span>

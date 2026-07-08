@@ -19,25 +19,26 @@ const skillsData = [
 
 export default function Skills() {
   return (
-    <section id="skills" className="mb-15 scroll-mt-30 max-md:scroll-mt-[150px]">
-      <h2 className="text-2xl text-[#111827] mb-6 pb-3 border-b border-gray-900 inline-block font-bold">
+    <section id="skills" className="mb-24 scroll-mt-24">
+      <h2 className="text-4xl md:text-5xl text-ink font-semibold tracking-tight mb-3">
         技術スタック
       </h2>
+      <p className="text-lg text-muted mb-10">普段の開発で使っている言語とツールです。</p>
 
-      <div className="grid grid-cols-2 gap-6 max-md:grid-cols-1">
+      <div className="grid grid-cols-2 gap-4 max-md:grid-cols-1">
         {skillsData.map((category) => (
           <div
             key={category.category}
-            className="bg-white p-5 rounded-xl shadow-sm"
+            className="bg-surface p-7 rounded-3xl"
           >
-            <h3 className="text-lg text-gray-600 mb-3 font-semibold">
+            <h3 className="text-lg text-ink mb-4 font-semibold tracking-tight">
               {category.category}
             </h3>
             <div className="flex flex-wrap gap-2">
               {category.skills.map((skill) => (
                 <span
                   key={skill}
-                  className="bg-gray-100 text-gray-600 py-1.5 px-3.5 rounded-full text-sm font-medium"
+                  className="bg-elevated text-ink/70 py-1.5 px-3.5 rounded-full text-sm font-medium"
                 >
                   {skill}
                 </span>

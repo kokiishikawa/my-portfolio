@@ -1,5 +1,8 @@
 "use client";
 
+import { getElementTop } from "@/lib/scroll";
+import ThemeToggle from "@/components/ThemeToggle";
+
 const navItems = [
   { href: "/#profile", label: "Profile" },
   { href: "/#skills", label: "Skills" },
@@ -8,13 +11,9 @@ const navItems = [
   { href: "/#contact", label: "Contact" },
 ];
 
-// ヘッダーの高さ + 余白（レスポンシブ対応）
+// ヘッダーの高さ(48px) + 余白（全画面幅で一定）
 // page.tsxのgetHeaderOffsetと同じ値を使用すること
-const getHeaderOffset = () => {
-  if (window.innerWidth <= 640) return 144;
-  if (window.innerWidth <= 768) return 120;
-  return 150;
-};
+const getHeaderOffset = () => 76;
 
 export default function Header() {
   // トップページでのアンカーリンククリック時にスムーズスクロール
@@ -22,13 +21,12 @@ export default function Header() {
     if (!href.startsWith("/#")) return;
 
     const hash = href.substring(1); // "/#profile" -> "#profile"
-    const element = document.querySelector(hash);
+    const element = document.querySelector<HTMLElement>(hash);
 
     if (element) {
       e.preventDefault();
-      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
       window.scrollTo({
-        top: elementPosition - getHeaderOffset(),
+        top: getElementTop(element) - getHeaderOffset(),
         behavior: "smooth",
       });
       history.pushState(null, "", hash);
@@ -37,19 +35,20 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-white/80 backdrop-blur-md border-b border-gray-200 py-4 px-3 text-center fixed top-0 left-0 right-0 z-100">
-      <nav className="flex justify-center gap-8 max-md:gap-4 max-sm:gap-5">
+    <header className="bg-paper/80 backdrop-blur-xl border-b border-ink/5 px-3 fixed top-0 left-0 right-0 z-100">
+      <nav className="h-12 flex items-center justify-center gap-9 max-md:gap-6 max-sm:gap-4">
         {navItems.map((item) => (
           <a
             key={item.href}
             href={item.href}
             onClick={(e) => handleClick(e, item.href)}
-            className="text-gray-700 no-underline text-[0.95rem] max-sm:text-base py-2 border-b-2 border-transparent hover:border-gray-400 hover:text-gray-900 transition-colors"
+            className="text-xs tracking-wide text-ink/70 no-underline hover:text-ink transition-colors duration-300"
           >
             {item.label}
           </a>
         ))}
       </nav>
+      <ThemeToggle />
     </header>
   );
 }

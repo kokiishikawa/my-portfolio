@@ -1,9 +1,54 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+/* dark: バリアントを <html class="dark"> ベースに切り替える
+   (デフォルトの prefers-color-scheme ではなくボタンで制御するため) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Anthropic 風デザイントークン
+   - ink: 見出し・本文の基本色(ウォームブラック)
+   - muted: サブテキスト用の温かみのあるグレー
+   - paper: ページ背景(アイボリー)
+   - surface: セクション背景用のオート麦色(oat)
+   - elevated: surface の上に載せるチップなどの背景
+   - line: 罫線・区切り線
+   - prose: ブログ本文の文字色
+   - accent: リンク・強調用のクレイ(テラコッタ)
+   - accent-strong: 本文中リンクなど小さい文字用の濃いクレイ
+   - font-display: 大見出し用セリフ体 */
+@theme {
+  --color-ink: #141413;
+  --color-muted: #6e6d64;
+  --color-paper: #faf9f5;
+  --color-surface: #f0eee6;
+  --color-elevated: #ffffff;
+  --color-line: #dedcd1;
+  --color-prose: #3d3d3a;
+  --color-accent: #c15f3c;
+  --color-accent-strong: #a8512f;
+  --font-display: Georgia, 'Times New Roman', 'Hiragino Mincho ProN',
+    'Yu Mincho', YuMincho, serif;
+  --ease-apple: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ダークモード: トークンの中身を差し替えるだけで全体が切り替わる
+   (コンポーネントは text-ink / bg-surface 等でトークンを参照しているため) */
+.dark {
+  --color-ink: #f5f4ee;
+  --color-muted: #a3a094;
+  --color-paper: #262624;
+  --color-surface: #30302e;
+  --color-elevated: #3d3c38;
+  --color-line: #3f3e3a;
+  --color-prose: #cfcdc5;
+  --color-accent: #d97757;
+  --color-accent-strong: #e08b6d;
+  color-scheme: dark; /* スクロールバーやフォーム部品もダークにする */
+}
+
 html {
   scroll-behavior: smooth;
-  background: #1a1a1a; /* フッターと同じ色（オーバースクロール対策） */
+  background: #141413; /* フッターと同じ色（オーバースクロール対策） */
   overscroll-behavior: none; /* バウンス効果を無効化 */
 }
 
@@ -12,29 +57,64 @@ body {
     var(--font-inter), 'Inter', -apple-system, BlinkMacSystemFont, 'Hiragino Sans',
     'Yu Gothic', sans-serif;
   line-height: 1.7;
-  color: #333;
-  background: #ffffff;
+  color: var(--color-ink);
+  background: var(--color-paper);
+  -webkit-font-smoothing: antialiased;
 }
 
-@keyframes suck-in {
-  from {
-    opacity: 0;
-    transform: scale(1.06);
-    filter: blur(8px);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-    filter: blur(0);
-  }
-}
-
-.animate-suck-in {
-  animation: suck-in 1.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+/* 大見出しはセリフ体(Anthropic 風)。h4 以下と UI テキストはサンセリフのまま */
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.01em;
 }
 
 .animation-delay-200 { animation-delay: 0.2s; }
 .animation-delay-450 { animation-delay: 0.45s; }
+
+/* Apple 風: 下からふわっと現れる(ヒーロー・scroll-reveal 共用) */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 1s var(--ease-apple) both;
+}
+
+/* scroll-reveal: Reveal.tsx が .is-visible を付与する */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 0.9s var(--ease-apple),
+    transform 0.9s var(--ease-apple);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .animate-fade-up {
+    animation: none;
+  }
+}
 
 @keyframes zoom-in {
   from {
@@ -59,25 +139,23 @@ body {
 
 .blog-content h2 {
   font-size: 1.5rem;
-  font-weight: 700;
-  color: #111827;
+  color: var(--color-ink);
   margin-top: 2.5rem;
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid #e5e7eb;
+  border-bottom: 1px solid var(--color-line);
 }
 
 .blog-content h3 {
   font-size: 1.25rem;
-  font-weight: 600;
-  color: #111827;
+  color: var(--color-ink);
   margin-top: 2rem;
   margin-bottom: 0.75rem;
 }
 
 .blog-content p {
   margin-bottom: 1.5rem;
-  color: #374151;
+  color: var(--color-prose);
 }
 
 .blog-content ul,
@@ -88,62 +166,67 @@ body {
 
 .blog-content li {
   margin-bottom: 0.5rem;
-  color: #374151;
+  color: var(--color-prose);
 }
 
 .blog-content a {
-  color: #2563eb;
+  color: var(--color-accent);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
 .blog-content a:hover {
-  color: #1d4ed8;
+  color: var(--color-accent-strong);
 }
 
 .blog-content blockquote {
-  border-left: 4px solid #d1d5db;
+  border-left: 4px solid var(--color-line);
   padding-left: 1rem;
   margin: 1.5rem 0;
-  color: #6b7280;
+  color: var(--color-muted);
   font-style: italic;
-  background: #f9fafb;
+  background: var(--color-surface);
   padding: 1rem;
   border-radius: 0 8px 8px 0;
 }
 
 .blog-content code {
-  background: #f1f5f9;
+  background: var(--color-surface);
   padding: 0.2rem 0.4rem;
   border-radius: 4px;
   font-size: 0.9em;
-  color: #e11d48;
+  color: var(--color-accent-strong);
 }
 
 .blog-content pre {
-  background: #1e293b;
+  background: #262624;
   padding: 1.25rem;
   border-radius: 12px;
   overflow-x: auto;
   margin: 1.5rem 0;
 }
 
+/* ダークモードではページ背景が #262624 なので、コードブロックは一段暗くする */
+.dark .blog-content pre {
+  background: #1a1917;
+}
+
 .blog-content pre code {
   background: transparent;
   padding: 0;
-  color: #e2e8f0;
+  color: #ebe9e4;
   font-size: 0.9rem;
   line-height: 1.6;
 }
 
 .blog-content strong {
   font-weight: 600;
-  color: #111827;
+  color: var(--color-ink);
 }
 
 .blog-content hr {
   border: none;
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid var(--color-line);
   margin: 2rem 0;
 }
 
@@ -161,6 +244,19 @@ body {
 
 /* Print Styles */
 @media print {
+  /* 印刷は常にライト配色(ダークモード中でも白い紙に黒文字で出す) */
+  .dark {
+    --color-ink: #141413;
+    --color-muted: #6e6d64;
+    --color-paper: #ffffff;
+    --color-surface: #f0eee6;
+    --color-elevated: #ffffff;
+    --color-line: #dedcd1;
+    --color-prose: #3d3d3a;
+    --color-accent: #c15f3c;
+    --color-accent-strong: #a8512f;
+  }
+
   * {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
@@ -173,7 +269,7 @@ body {
   }
 
   .header {
-    background: #1a1a1a !important;
+    background: #141413 !important;
     padding: 30px 20px;
     page-break-after: avoid;
   }

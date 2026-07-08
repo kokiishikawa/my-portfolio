@@ -29,14 +29,11 @@ export function OpeningAnimation() {
 
   return (
     <div
-      className={`fixed inset-0 z-[9999] flex items-center justify-center bg-[#f8fafc] transition-opacity duration-[600ms] ${
+      className={`fixed inset-0 z-[9999] flex items-center justify-center bg-paper transition-opacity duration-600 ${
         fading ? "opacity-0" : "opacity-100"
       }`}
     >
-      <span
-        className="text-2xl font-light tracking-widest select-none italic"
-        style={{ color: "#1e3a5f" }}
-      >
+      <span className="text-2xl md:text-3xl font-display italic tracking-tight select-none text-ink/80 animate-fade-up">
         as a part of your calm
       </span>
     </div>

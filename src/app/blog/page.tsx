@@ -29,33 +29,33 @@ export default function BlogPage() {
     <div className="flex flex-col min-h-svh">
       <Header />
 
-      <main className="max-w-[900px] mx-auto pb-10 px-5 flex-grow w-full pt-36 max-md:pt-28 max-sm:pt-32">
-        <div className="mb-10">
-          <h1 className="text-3xl text-[#1e3a5f] font-bold mb-2">Blog</h1>
-          <p className="text-gray-600">技術的な学びや日常について</p>
+      <main className="max-w-[900px] mx-auto pb-10 px-5 flex-grow w-full pt-32">
+        <div className="mb-12">
+          <h1 className="text-4xl md:text-5xl text-ink font-semibold tracking-tight mb-3">Blog</h1>
+          <p className="text-lg text-muted">技術的な学びや日常について</p>
         </div>
 
         {posts.length === 0 ? (
-          <div className="bg-white p-10 rounded-xl text-center">
-            <p className="text-gray-600">記事がありません。</p>
+          <div className="bg-surface p-10 rounded-3xl text-center">
+            <p className="text-muted">記事がありません。</p>
           </div>
         ) : (
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-4">
             {posts.map((post) => (
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
-                className="group block bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 no-underline border-l-4 border-transparent hover:border-blue-500"
+                className="group block bg-surface p-7 rounded-3xl transition-colors duration-300 no-underline hover:bg-[#e9e6db] dark:hover:bg-[#3a3936]"
               >
                 <div className="flex justify-between items-start gap-4 mb-3 max-md:flex-col max-md:gap-1">
-                  <h2 className="text-xl text-[#1e3a5f] font-semibold group-hover:text-blue-600 transition-colors">
+                  <h2 className="text-xl text-ink font-semibold tracking-tight group-hover:text-accent transition-colors duration-300">
                     {post.title}
                   </h2>
-                  <span className="text-sm text-gray-400 whitespace-nowrap">
+                  <span className="text-sm text-muted whitespace-nowrap">
                     {post.date}
                   </span>
                 </div>
-                <p className="text-gray-600 text-sm mb-4 leading-relaxed">
+                <p className="text-ink/70 text-sm mb-4 leading-relaxed">
                   {post.description}
                 </p>
                 {post.tags && post.tags.length > 0 && (
@@ -63,7 +63,7 @@ export default function BlogPage() {
                     {post.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="bg-gray-100 text-gray-600 py-1 px-3 rounded-full text-xs"
+                        className="bg-elevated text-ink/70 py-1 px-3 rounded-full text-xs"
                       >
                         {tag}
                       </span>

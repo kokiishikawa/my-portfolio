@@ -2,21 +2,19 @@
 
 import { useState, useEffect, useLayoutEffect } from "react";
 import Header from "@/components/Header";
+import Hero from "@/components/Hero";
 import Profile from "@/components/Profile";
 import Skills from "@/components/Skills";
 import ProjectCard from "@/components/ProjectCard";
 import Footer from "@/components/Footer";
 import Lightbox from "@/components/Lightbox";
+import Reveal from "@/components/Reveal";
 import { projects } from "@/data/projects";
+import { getElementTop } from "@/lib/scroll";
 
-// ヘッダーの高さ + 余白（レスポンシブ対応）
-// Header.tsxのhandleClick内と同じ値を使用すること
-const getHeaderOffset = () => {
-  if (typeof window === "undefined") return 150;
-  if (window.innerWidth <= 640) return 144;
-  if (window.innerWidth <= 768) return 120;
-  return 150;
-};
+// ヘッダーの高さ(48px) + 余白（全画面幅で一定）
+// Header.tsxのgetHeaderOffsetと同じ値を使用すること
+const getHeaderOffset = () => 76;
 
 export default function Home() {
   const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(null);
@@ -61,11 +59,10 @@ export default function Home() {
     if (!hash) return;
 
     const scrollToHash = () => {
-      const element = document.querySelector(hash);
+      const element = document.querySelector<HTMLElement>(hash);
       if (element) {
-        const elementPosition = element.getBoundingClientRect().top + window.scrollY;
         window.scrollTo({
-          top: elementPosition - getHeaderOffset(),
+          top: getElementTop(element) - getHeaderOffset(),
           behavior: "smooth",
         });
       }
@@ -84,35 +81,39 @@ export default function Home() {
     <div className="flex flex-col min-h-svh">
       <Header />
 
-      <main className="max-w-[900px] mx-auto pb-10 px-5 flex-grow w-full" style={{ paddingTop: "144px" }}>
-        <div className="animate-suck-in">
+      <main className="max-w-[900px] mx-auto pb-10 px-5 flex-grow w-full" style={{ paddingTop: "96px" }}>
+        <Hero />
+        <Reveal>
           <Profile />
-        </div>
-        <div className="animate-suck-in animation-delay-200">
+        </Reveal>
+        <Reveal>
           <Skills />
-        </div>
+        </Reveal>
 
-        <section id="projects"
-          className="mb-15 scroll-mt-30 max-md:scroll-mt-[150px] animate-suck-in animation-delay-450">
-          <h2 className="text-2xl text-[#111827] mb-6 pb-3 border-b border-gray-900 inline-block font-bold">
-            個人開発プロジェクト
-          </h2>
+        <section id="projects" className="mb-24 scroll-mt-24">
+          <Reveal>
+            <h2 className="text-4xl md:text-5xl text-ink font-semibold tracking-tight mb-3">
+              個人開発プロジェクト
+            </h2>
+            <p className="text-lg text-muted mb-10">個人で設計・開発したプロジェクトです。</p>
+          </Reveal>
 
           {pagedProjects.map((project) => (
-            <ProjectCard
-              key={project.title}
-              title={project.title}
-              badge={project.badge}
-              images={project.images}
-              techStack={project.techStack}
-              description={project.description}
-              links={project.links}
-              onImageClick={openLightbox}
-            />
+            <Reveal key={project.title}>
+              <ProjectCard
+                title={project.title}
+                badge={project.badge}
+                images={project.images}
+                techStack={project.techStack}
+                description={project.description}
+                links={project.links}
+                onImageClick={openLightbox}
+              />
+            </Reveal>
           ))}
 
           {totalPages > 1 && (
-            <div className="flex justify-center gap-2 mt-4">
+            <div className="flex justify-center gap-2 mt-8">
               {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
                 <button
                   key={page}
@@ -120,17 +121,16 @@ export default function Home() {
                     setCurrentPage(page);
                     const element = document.getElementById("projects");
                     if (element) {
-                      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
                       window.scrollTo({
-                        top: elementPosition - getHeaderOffset(),
+                        top: getElementTop(element) - getHeaderOffset(),
                         behavior: "smooth",
                       });
                     }
                   }}
-                  className={`w-9 h-9 rounded-full text-sm font-semibold transition-colors duration-200 cursor-pointer ${
+                  className={`w-9 h-9 rounded-full text-sm font-semibold transition-colors duration-300 cursor-pointer ${
                     page === currentPage
-                      ? "bg-gray-900 text-white"
-                      : "bg-white text-gray-600 hover:bg-gray-100"
+                      ? "bg-ink text-paper"
+                      : "bg-surface text-muted hover:bg-ink/10"
                   }`}
                 >
                   {page}

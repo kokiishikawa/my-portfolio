@@ -28,14 +28,26 @@ export const metadata: Metadata = {
 	},
 };
 
+// 描画前に .dark を付与してちらつきを防ぐ(localStorage の保存値 > OS 設定の順で判定)
+// body の先頭に置くことで、コンテンツの描画より先に必ず実行される
+const themeInitScript = `
+try {
+	const saved = localStorage.getItem("theme");
+	const dark = saved ? saved === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+	document.documentElement.classList.toggle("dark", dark);
+} catch (e) {}
+`;
+
 export default function RootLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="ja">
+		// suppressHydrationWarning: .dark はサーバー出力に含まれないクラスなので警告を抑制
+		<html lang="ja" suppressHydrationWarning>
 			<body className={inter.className}>
+				<script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
 				<OpeningAnimation />
 				{children}
 				<Analytics />
